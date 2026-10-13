@@ -1,0 +1,78 @@
+@import 'tailwindcss';
+
+/*
+ * Tokens de diseño tomados de los prototipos (docs/prototipos).
+ * Regla: los componentes usan SOLO estas utilidades (bg-app, text-ink, bg-primary…), nunca colores sueltos.
+ */
+@theme {
+  --font-sans: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  --color-app: #fbf4f1;
+  --color-sidebar: #f7eeea;
+  --color-sidebar-active: #efe3de;
+  --color-surface: #ffffff;
+  --color-surface-muted: #f8f1ee;
+  --color-surface-sunken: #f3e9e5;
+  --color-border: #efe3de;
+  --color-border-strong: #e2d2cb;
+
+  --color-primary: #8b4a3c;
+  --color-primary-hover: #763c30;
+  --color-primary-soft: #fbede8;
+  --color-on-primary: #ffffff;
+
+  --color-ink: #2b2321;
+  --color-ink-soft: #8a7a75;
+  --color-ink-faint: #b9aaa5;
+
+  --color-success: #3e6b4a;
+  --color-success-bg: #e4f1e6;
+  --color-success-strong: #4f6b57;
+  --color-danger: #c0392b;
+  --color-danger-bg: #fdecec;
+  --color-warning: #9a5b2e;
+  --color-warning-bg: #fce9da;
+  --color-pending: #8b5e34;
+  --color-pending-bg: #fdf3e8;
+  --color-neutral-bg: #f1ebe8;
+
+  --color-overlay: rgb(43 35 33 / 0.45);
+
+  --shadow-card: 0 1px 2px rgb(139 74 60 / 0.04), 0 4px 16px rgb(139 74 60 / 0.06);
+  --shadow-raised: 0 8px 24px rgb(139 74 60 / 0.18);
+
+  --animate-spin-slow: spin 1.2s linear infinite;
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    @apply bg-app text-ink font-sans;
+  }
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-primary;
+  }
+}
+
+/* Ajustes de FullCalendar para que respete la paleta (usa variables CSS propias). */
+.fc {
+  --fc-border-color: var(--color-border);
+  --fc-today-bg-color: var(--color-primary-soft);
+  --fc-event-bg-color: var(--color-primary);
+  --fc-event-border-color: var(--color-primary);
+  --fc-now-indicator-color: var(--color-danger);
+  --fc-button-bg-color: var(--color-surface);
+  --fc-button-border-color: var(--color-border);
+  --fc-button-text-color: var(--color-ink);
+  --fc-button-hover-bg-color: var(--color-surface-muted);
+  --fc-button-hover-border-color: var(--color-border-strong);
+  --fc-button-active-bg-color: var(--color-primary);
+  --fc-button-active-border-color: var(--color-primary);
+  font-size: 0.85rem;
+}
+.fc .fc-button-primary:not(:disabled).fc-button-active {
+  color: var(--color-on-primary);
+}
